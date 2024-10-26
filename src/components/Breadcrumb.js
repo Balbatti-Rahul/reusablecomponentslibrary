@@ -1,6 +1,5 @@
-// src/components/Breadcrumb.js
+// Breadcrumb.js
 import React from 'react';
-import PropTypes from 'prop-types';
 
 const Breadcrumb = ({ items }) => {
   return (
@@ -8,16 +7,16 @@ const Breadcrumb = ({ items }) => {
       <ol className="breadcrumb">
         {items.map((item, index) => (
           <li key={index} className="breadcrumb-item">
-            {item}
+            {item.link ? (
+              <a href={item.link}>{item.label}</a>
+            ) : (
+              item.label
+            )}
           </li>
         ))}
       </ol>
     </nav>
   );
-};
-
-Breadcrumb.propTypes = {
-  items: PropTypes.array.isRequired,
 };
 
 export default Breadcrumb;
